@@ -1,0 +1,28 @@
+
+
+
+
+
+
+
+
+
+                
+            <% user.posts.reverse().forEach(function(post){ %>
+                <div class="post border-[1px] border-zinc-600 bg-zinc-800 px-4 py-3 mb-1 rounded-md">
+                    <h1 class="text-blue-500 mb-2 text-xl">@<%= user.username %></h1>
+                    <p class="tracking-tight" name="content"><%= post.content %>
+                    </p>
+
+                    <div class="btns flex gap-8 py-2">
+                        <a class="text-blue-500 font-semibold" href="/like/<%= post._id %>"> 
+
+                        <%= post.likes.indexOf(user._id) === -1 ? "Like" : "Unlike"  %> 
+
+                        <small class="text-white ml-2">[ <%= post.likes.length %> likes ]</small>
+                    
+
+                        <a class="text-zinc-500 font-semibold" href="/edit/<%= post._id %>">Edit</a>
+                    </div>
+                </div>
+            <% }) %>
