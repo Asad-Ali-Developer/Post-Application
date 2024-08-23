@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-mongoose.connect(`mongodb://127.0.0.1:27017/miniProjectPracice`)
+mongoose.connect(`mongodb+srv://uhope1645:67362@notes-app.quk73rc.mongodb.net/?retryWrites=true&w=majority&appName=Notes-App`)
 
 
 const userSchema = mongoose.Schema({

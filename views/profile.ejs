@@ -15,6 +15,12 @@
         *::-webkit-scrollbar {
         width: 10px;
     }
+
+    #postBox{
+        margin-inline: auto;
+        width: 90%;
+    }
+
     *::-webkit-scrollbar-track {
         background: #181818;
     }
@@ -29,13 +35,14 @@
 
 <body class="bg-zinc-900">
 
-    <div class="w-full min-h-screen bg-zinc-900 text-white font-sans">
+    <div class="w-full min-h-screen bg-zinc-900 text-white font-sans 
+    flex justify-center items-center flex-col">
 
-        <div class="container flex flex-col items-center">
+        <div class="w-full container mt-0 flex flex-col items-center">
 
-            <a class=" font-semibold text-red-400 absolute top-10 left-[93%] hover:text-red-500" href="/logout">Logout</a>
+            <a class="font-semibold text-red-400 my-5 text-center hover:text-red-500" href="/logout">Logout</a>
 
-            <div class="w-[25%] my-10 py-3 border-[1px] border-zinc-600 rounded-md flex flex-col items-center">
+            <div id="postBox" class=" w-[90%] mt-0 mb-10 py-3 border-[1px] border-zinc-600 rounded-md flex flex-col items-center">
 
                 <h2 class="text-green-500 text-2xl text-center font-semibold my-2">Create Post</h2>
                 <h1 class="mb-2">Hello, <span class="text-yellow-400 font-semibold text-lg">
@@ -64,12 +71,12 @@
 
 
 
-        <div class="py-7 rounded-md px-10 border-[1px] border-zinc-600 mx-10">
+        <div class="py-7 w-[90%] rounded-md px-5 border-[1px] border-zinc-600 mx-5">
             <h1 class="text-blue-500 text-lg font-semibold">Your Posts</h1>
 
-            <div class="postConstainer grid grid-rows-2 grid-cols-4 gap-4 mt-10">
+            <div class="postConstainer flex flex-wrap gap-4 mt-10">
                 <% user.posts.reverse().forEach(function(post){ %>
-                    <div class="post border-[1px] border-zinc-600 bg-zinc-800 px-4 py-3 mb-1 rounded-md">
+                    <div class="post border-[1px] border-zinc-600  md:width-full bg-zinc-800 px-4 py-3 mb-1 rounded-md">
                         <h1 class="text-blue-500 mb-2 text-xl">@<%= user.username %></h1>
                         <p class="tracking-tight" name="content"><%= post.content %>
                         </p>
@@ -79,7 +86,9 @@
     
                             <%= post.likes.indexOf(user._id) === -1 ? "Like" : "Unlike"  %> 
     
-                            <small class="text-white ml-2">[ <%= post.likes.length %> likes ]</small>
+                            <small class="text-white ml-2">
+                                [ <%= post.likes.length %> likes ]
+                            </small>
                         
     
                             <a class="text-zinc-500 font-semibold" href="/edit/<%= post._id %>">Edit</a>

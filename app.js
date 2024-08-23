@@ -69,7 +69,7 @@ app.get('/edit/:id', isLoggedIn, async (req, res) => {
 
 app.post('/update/:id', isLoggedIn, async (req, res) => {
 
-    let post  = await postModel.findOneAndUpdate({_id: req.params.id}, {content : req.body.content})
+    await postModel.findOneAndUpdate({_id: req.params.id}, {content : req.body.content})
 
 
     // res.render("edit", {post})
